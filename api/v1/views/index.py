@@ -11,13 +11,13 @@ from models.user import User
 from flask import jsonify
 
 
-@app_views.route('/status')
+@app_views.route('/status', strict_slashes=False)
 def status():
     """fetch the response header for OK"""
     return jsonify({"status": "OK"})
 
 
-@app_views.route('/stats')
+@app_views.route('/stats', strict_slashes=False)
 def stats():
     """fetches the stats of the data"""
     classes = {
