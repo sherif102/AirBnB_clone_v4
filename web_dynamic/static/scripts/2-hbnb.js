@@ -14,13 +14,16 @@ $(".filter_amenities .popover input").on("click", function()
 
     selectedAmenities.text(amenityNames.join(", "));
 
-    if (amenityNames.length() < 1) {
-        selectedAmenities.text("&nbps;");
+    if (amenityNames.length < 1) {
+        selectedAmenities.text(" ");
     }
 })
 
 $.get("http://0.0.0.0:5001/api/v1/status/", function(body)
 {
-    const status = console.log(body.status);
-    if 
+    if (body.status === "OK") {
+        $("#api_status").addClass("available");
+    } else {
+        $("#api_status").removeClass("available");
+    }
 })
