@@ -96,16 +96,19 @@ def post_place_search():
         return jsonify({'error': 'Not a JSON'}), 400
 
     try:
+        if not input_data:
+            raise Exception
+
         filters_len = 0
 
         for key, values in input_data.items():
-            filters_len += len(values)
+            if key == "amenities":
+                continue
+            filters_len = filters_len + len(values)
 
         if filters_len < 1:
             raise Exception
 
-        if not input_data:
-            raise Exception
         for key, values in input_data.items():
             for value in values:
                 obj = storage.get(item_class[key], value)
