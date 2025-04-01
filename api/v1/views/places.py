@@ -124,6 +124,7 @@ def post_place_search():
                         places_list.append(place.to_dict())
 
     except Exception:
+        places_list = []
         places = storage.all(Place)
         for place in places.values():
             places_list.append(place.to_dict())
