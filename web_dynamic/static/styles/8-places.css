@@ -128,3 +128,37 @@ article h2 {
     width: 50px;
     height: 50px;
 }
+
+
+/* review */
+
+.review {
+    margin-top: 1em;
+} .review h2 {
+    display: inline-block;
+    font-size: 23px;
+    text-align: left;
+    margin: 0;
+}
+.review * {
+    text-align: left;
+}
+.review span {
+    margin-left: 8px;
+    color: #FF5A5F;
+    font-size: 18px;
+    display: inline-block;
+}
+.review span:hover {
+    cursor:pointer;
+}
+.review ul {
+    padding: 0;
+    margin: 0;
+}
+
+.review ul li div h3 {
+    margin: 0;
+    padding: 0;
+
+}
