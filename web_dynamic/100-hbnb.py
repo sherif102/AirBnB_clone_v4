@@ -15,7 +15,7 @@ def teardown(exception=None):
     storage.close()
 
 
-@app.route("/3-hbnb", strict_slashes=False)
+@app.route("/100-hbnb", strict_slashes=False)
 def hbnb():
     """return states list"""
     state_list = storage.all(State).values()
@@ -23,7 +23,7 @@ def hbnb():
     place_list = storage.all(Place).values()
     user_list = storage.all(User).values()
 
-    return render_template("3-hbnb.html", st_am={'states': state_list, 'amenities': amenity_list, 'places': place_list, 'users': user_list}, cache_id=uuid.uuid4())
+    return render_template("100-hbnb.html", st_am={'states': state_list, 'amenities': amenity_list, 'places': place_list, 'users': user_list}, cache_id=uuid.uuid4())
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5000")
+    app.run(host="0.0.0.0", port="5000", debug=True)

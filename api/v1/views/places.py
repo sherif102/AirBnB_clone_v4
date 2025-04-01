@@ -99,6 +99,8 @@ def post_place_search():
         if not input_data:
             raise Exception
         for key, values in input_data.items():
+            if key == "amenities":
+                continue
             if len(values) < 1:
                 raise Exception
             for value in values:

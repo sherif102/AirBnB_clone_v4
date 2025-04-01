@@ -35,9 +35,8 @@ $.ajax({
     dataType: "json",
     contentType: "application/json",
     success: function (response) {
-        console.log(response[0])
         const places = $(".places");
-        const body = response.sort();
+        const body = response.sort((a, b) => a.name.localeCompare(b.name));
         $.each(body, function(index, value) {
             const divArticle = $("<article></article>");
             const divHeadline = $("<div class='headline'></div>")
