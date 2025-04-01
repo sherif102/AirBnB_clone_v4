@@ -99,10 +99,12 @@ def post_place_search():
         if not input_data:
             raise Exception
         for key, values in input_data.items():
-            if key == "amenities":
+            if key not in item_class or not values:
                 continue
             for value in values:
                 obj = storage.get(item_class[key], value)
+                if obj is None:
+                    continue
                 if obj.__class__.__name__ == "State":
                     cities = obj.cities
                     for city in cities:
@@ -114,7 +116,7 @@ def post_place_search():
                     for place in places:
                         places_list.append(place.to_dict())
 
-        if len(places_list) < 1:
+        if not places_list:
             raise Exception
     except Exception:
         places = storage.all(Place)
