@@ -101,7 +101,7 @@ def post_place_search():
             raise Exception
         for key, values in input_data.items():
 
-            filters_len = filters_len + len(values)
+            filters_len += len(values)
 
             for value in values:
                 obj = storage.get(item_class[key], value)
