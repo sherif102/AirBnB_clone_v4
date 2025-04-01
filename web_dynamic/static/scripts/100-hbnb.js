@@ -169,7 +169,7 @@ $("button").on("click", function() {
         $.ajax({
             type: "POST",
             url: "http://0.0.0.0:5001/api/v1/places_search/",
-            data: JSON.stringify({"amenities": amenityIds, "cities": cityIds, "states": stateIds}),
+            data: JSON.stringify({"cities": cityIds, "states": stateIds, "amenities": amenityIds}),
             dataType: "json",
             contentType: "application/json",
             success: function (response) {

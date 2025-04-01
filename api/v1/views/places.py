@@ -98,18 +98,9 @@ def post_place_search():
     try:
         if not input_data:
             raise Exception
-
-        filters_len = 0
-
         for key, values in input_data.items():
-            if key == "amenities":
-                continue
-            filters_len = filters_len + len(values)
-
-        if filters_len < 1:
-            raise Exception
-
-        for key, values in input_data.items():
+            if len(values) < 1:
+                raise Exception
             for value in values:
                 obj = storage.get(item_class[key], value)
                 if obj.__class__.__name__ == "State":
@@ -122,9 +113,7 @@ def post_place_search():
                     places = obj.places
                     for place in places:
                         places_list.append(place.to_dict())
-
     except Exception:
-        places_list = []
         places = storage.all(Place)
         for place in places.values():
             places_list.append(place.to_dict())
