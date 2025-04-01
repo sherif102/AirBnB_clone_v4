@@ -66,6 +66,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.locations .selected_locations {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 ul {
 	list-style-type: none;

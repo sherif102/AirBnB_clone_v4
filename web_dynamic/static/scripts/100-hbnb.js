@@ -165,11 +165,15 @@ function placeLister(body, parent) {
 // places filtering
 $("button").on("click", function() {
     if(amenityNames.length > 0 || locationsChecked.length > 0) {
-        $("article").remove();
+        $(".places article").remove();
         $.ajax({
             type: "POST",
             url: "http://0.0.0.0:5001/api/v1/places_search/",
-            data: JSON.stringify({"cities": cityIds, "states": stateIds, "amenities": amenityIds}),
+            data: JSON.stringify({
+                "cities": cityIds,
+                "states": stateIds,
+                "amenities": amenityIds
+            }),
             dataType: "json",
             contentType: "application/json",
             success: function (response) {
@@ -177,6 +181,10 @@ $("button").on("click", function() {
                 const filterBody = response.sort((a, b) => a.name.localeCompare(b.name));
                 placeLister(filterBody, places);
                 console.log(filterBody);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching places:", status, error);
+                alert("Failed to retrieve places. Please try again.");
             }
         });
     } else {
